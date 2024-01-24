@@ -8,6 +8,5 @@ jobs:
           node-version: '20'
       - name: npm install
         run: npm install
-
       - name: lint
         run: npm run eslint
