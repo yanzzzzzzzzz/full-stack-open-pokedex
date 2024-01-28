@@ -1,6 +1,21 @@
-- name: e2e tests
-  uses: cypress-io/github-action@v6.6.1
-  with:
-    command: "npm run test:e2e"
-    start: npm run start-prod
-    wait-on: "http://localhost:5000"
+name: e2e tests
+'on':
+  push:
+    branches:
+      - main
+jobs:
+  e2e_tests:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - name: Install dependencies
+        run: npm install
+      - name: Start application
+        run: npm run start-prod
+      - name: Wait for the application to be ready
+        run: 'npx wait-on http://localhost:5000'
+      - name: Run Cypress tests
+        run: 'npm run test:e2e'
