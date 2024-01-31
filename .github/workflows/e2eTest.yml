@@ -7,16 +7,18 @@ jobs:
   e2e_tests:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
       - uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '16'
       - name: Install dependencies
         run: npm install
-      - name: Start application
-        run: npm run start &
-      - name: e2e tests
-        uses: cypress-io/github-action@v6
+      - name: Build
+        run: npm run build
+      - name: Test (Cypress)
+        uses: cypress-io/github-action@v5
         with:
-          command: 'npm run test:e2e'
-          wait-on: 'http://localhost:5000'
+          command: npm run test:e2e
+          start: npm run start-prod
+          wait-on: http://localhost:5000
