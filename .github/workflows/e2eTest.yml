@@ -3,6 +3,9 @@ name: e2e tests
   push:
     branches:
       - main
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize]
 jobs:
   e2e_tests:
     runs-on: ubuntu-20.04
