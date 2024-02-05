@@ -20,7 +20,8 @@ jobs:
         env:
           COMMIT_MESSAGES: '${{ toJson(github.event.commits.*.message) }}'
         run: echo "$COMMIT_MESSAGES"
-      - name: check contain skip tag
+      - name: Conditionally Run
         env:
           COMMIT_MESSAGES: '${{ toJson(github.event.commits.*.message) }}'
-        run: echo contains('$COMMIT_MESSAGES', '#skip')
+        if: contains('$COMMIT_MESSAGES', '#skip')
+        run: echo "SomeString did exist and should run"
