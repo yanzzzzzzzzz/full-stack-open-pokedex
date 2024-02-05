@@ -23,4 +23,4 @@ jobs:
       - name: check contain skip tag
         env:
           COMMIT_MESSAGES: '${{ toJson(github.event.commits.*.message) }}'
-        run: 'echo contains("$COMMIT_MESSAGES", ''#skip'')'
+        run: echo contains('$COMMIT_MESSAGES', '#skip')
