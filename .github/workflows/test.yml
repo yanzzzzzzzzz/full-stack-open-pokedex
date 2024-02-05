@@ -23,5 +23,5 @@ jobs:
       - name: Conditionally Run
         env:
           COMMIT_MESSAGES: '${{ toJson(github.event.commits.*.message) }}'
-        if: contains($COMMIT_MESSAGES, '#skip')
+        if: '${{ contains($COMMIT_MESSAGES, ''#skip'') }}'
         run: echo "SomeString did exist and should run"
