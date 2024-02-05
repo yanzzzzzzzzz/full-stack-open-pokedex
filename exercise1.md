@@ -12,7 +12,7 @@ In javascript , continue integration have following step:
 2. Testing: unit test, integration test, end to end test, like Jest, Mocha, Jasmine, Cypress
 3. Building: Webpack, Babel, Rollup, Parcel, Grunt, Gulp
 
-Without Jenkins & GitHub Actions CI tools: TeamCity, circleci, Bamboo, GitLab
+Without Jenkins & GitHub Actions CI tools: TeamCity, CircleCI, Bamboo, GitLab
 
 Self-hosting:
 
